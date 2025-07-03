@@ -27,3 +27,4 @@ Use the attached requirement document and elaborate a development spec that I wi
 > 💡 **Note:** I got best results using `CLaude Sonnet 4` model
 6. Review the generated development spec, then prompt Copilot to proceed with implementing the semantic model.
 
+See the branch [ai-development](https://github.com/RuiRomano/pbip-demo-agentic/tree/ai-development) for an example of what was built by Github Copilot.
