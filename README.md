@@ -22,7 +22,7 @@ In Power BI, this is made possible by open file formats with [Power BI Project f
 4. Open Github Copilot Chat in [Agent mode](https://code.visualstudio.com/blogs/2025/02/24/introducing-copilot-agent-mode)
 5. Attach the [requirements-01.md](.requirements/requirements-01.md) and prompt the following:
 ```plaintext
-Use the attached requirement document and elaborate a development spec that I will review and give you for implementation.
+Use the attached requirements document to draft a development specification. I’ll review it and provide feedback before you proceed with implementation.
 ```
 > 💡 **Note:** I got best results using `CLaude Sonnet 4` model
 6. Review the generated development spec, then prompt Copilot to proceed with implementing the semantic model.
