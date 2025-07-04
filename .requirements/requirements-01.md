@@ -1,4 +1,4 @@
-Be sure to thoroughly read and understand the PBIP knowledge base in the [kb-pbip](../.resources/kb-pbip.md) file.
+Thoroughly read and understand the PBIP knowledge base in the [kb-pbip](../.resources/kb-pbip.md) file.
 
 # Business Requirements 💼
 
@@ -15,7 +15,7 @@ Create a new semantic model named 'Sales' and ensure the following requirements 
 - **Server**: `dummyserver.database.windows.net`
 - **Database**: `AdventureWorksDW`
 
-Schema information of the Datawarehouse can be found in the file `AzureSQLSchema.csv`.
+If you cannot connect to the SQL Server above to get the schema, all  information of the Datawarehouse can be found in the file `AzureSQLSchema.csv`. 
 
 # Development rules 🧑‍💻
 

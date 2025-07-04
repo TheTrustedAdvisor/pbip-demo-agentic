@@ -27,6 +27,7 @@ table Calendar
 	column Date
 		dataType: dateTime
 		isHidden
+		isKey
 		formatString: Long Date
 		summarizeBy: none
 		sourceColumn: Date

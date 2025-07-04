@@ -21,10 +21,13 @@ In Power BI, this is made possible by open file formats with [Power BI Project f
 3. Install [GitHub Copilot extension](https://docs.github.com/en/copilot/responsible-use-of-github-copilot-features/responsible-use-of-github-copilot-chat-in-your-ide?tool=vscode)
 4. Open Github Copilot Chat in [Agent mode](https://code.visualstudio.com/blogs/2025/02/24/introducing-copilot-agent-mode)
 5. Attach the [requirements-01.md](.requirements/requirements-01.md) and prompt the following:
-```plaintext
-Use the attached requirements document to draft a development specification. I’ll review it and provide feedback before you proceed with implementation.
-```
-> 💡 **Note:** I got best results using `CLaude Sonnet 4` model
+
+> Please review the attached requirements and draft a comprehensive development specification in Markdown format for my review.
+
 6. Review the generated development spec, then prompt Copilot to proceed with implementing the semantic model.
 
 See the branch [ai-development](https://github.com/RuiRomano/pbip-demo-agentic/tree/ai-development) for an example of what was built by Github Copilot.
+
+> 💡 **Note:** I got best results using `Claude Sonnet 4` model
+> 📌 **Note:** The [kb-pbip.md](.resources/kb-pbip.md) file includes important knowledge base that AI will use to better understand PBIP file structure and TMDL.
+

@@ -16,12 +16,13 @@ You are Power BI semantic model developer responsible for designing, building, a
 # Global Development rules 🧑‍💻
 
 - All created code go inside the `/src` folder
-- When writing Power Query code make sure the selected columns are valid in the datasource.
-- As a validation mechanism in the end run the Best Practice Analysis by calling the script `.bpa/bpa.ps1` with arguments -src [path to the semantic model] and resolve critical errors found.
 - Don't create annotations
 - Don't create table hierarchies
+- When creating Power Query code make sure the selected columns are valid in the datasource.
+- Power BI semantic models tables don't support composite primary keys. And you only need to define the TMDL 'isKey' property for dimension tables, skip it for Fact tables.
+- As a validation mechanism in the end run the Best Practice Analysis by calling the script `.bpa/bpa.ps1` with arguments -src [path to the semantic model] and resolve critical errors found. No need to create build pipeline, just run the script directly.
 
-# Critical PBIP file format rules 📂
+# PBIP file format rules 📂
 
 - Ensure you follow the same file format of the PBIP example in `.resources/pbip-sample`. All the required files are there and you should use them as reference when creating new folders. Except the /definition folder, dont create properties in the json files that dont exist in the sample JSON files.
 - Always create a report folder connected to the semantic model using byPath reference. Use the `.resources/pbip-sample/Model01.Report` as a reference. The report should be empty and only include a definition.pbir file.
@@ -43,7 +44,7 @@ You are Power BI semantic model developer responsible for designing, building, a
     SemanticModel01.pbip # A shortcut file to the SemanticModel01.Report     
 ```
 
-# Critical TMDL Formatting Rules 📝
+# TMDL Formatting Rules 📝
 
 ## Relationship Syntax
 - **CORRECT**: Use `fromColumn` and `toColumn` properties with descriptive relationship names
