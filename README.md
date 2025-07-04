@@ -8,7 +8,7 @@ In Power BI, this is made possible by open file formats with [Power BI Project f
 
 # ⚙️ How does it work?
 
-1. You describe what you need – your requirements and the rules the agent should follow.
+1. You describe what you need – your [requirements](.requirements/requirements-01.md) and the [rules](.resources/kb-pbip.md) the agent should follow.
 2. An AI agent turns that into a development spec – readable, reviewable, and adjustable.
 3. You say "Go" and the agent starts implementing the spec autonomously.
 4. It runs its own best practice checks, fixes issues, and iterates until it gets it right.
