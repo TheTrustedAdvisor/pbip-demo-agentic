@@ -26,6 +26,8 @@ In Power BI, this is made possible by open file formats with [Power BI Project f
 
 6. Review the generated development spec, then prompt Copilot to proceed with implementing the semantic model.
 
+▶️End-to-End demo: [LinkedIn post & video](https://www.linkedin.com/feed/update/urn:li:activity:7347917906363518977/?commentUrn=urn%3Ali%3Acomment%3A(ugcPost%3A7347917694953754625%2C7348260275357204482)&dashCommentUrn=urn%3Ali%3Afsd_comment%3A(7348260275357204482%2Curn%3Ali%3AugcPost%3A7347917694953754625))
+
 See the branch [ai-agent](https://github.com/RuiRomano/pbip-demo-agentic/tree/ai-agent) for an example of what was built by Github Copilot.
 
 > 📌 **Notes** 
