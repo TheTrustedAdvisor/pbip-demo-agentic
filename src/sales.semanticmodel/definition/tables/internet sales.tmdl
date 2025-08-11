@@ -1,0 +1,70 @@
+table 'internet sales'
+
+	column 'product key'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: 'product key'
+
+	column 'order date'
+		dataType: dateTime
+		summarizeBy: none
+		sourceColumn: 'order date'
+
+	column 'sales amount'
+		dataType: decimal
+		summarizeBy: sum
+		sourceColumn: 'sales amount'
+
+	/// Gesamtumsatz aus Internetkanal im aktuellen Filterkontext
+	measure 'sales amount' = SUM('internet sales'[sales amount])
+		formatString: #,##0.00
+
+	/// Vorjahresumsatz (gleicher Zeitraum) Internetkanal
+	measure 'sales amount (ly)' = CALCULATE([sales amount], SAMEPERIODLASTYEAR('Calendar'[Date]))
+		formatString: #,##0.00
+
+	/// YTD-Umsatz Internetkanal
+	measure 'sales amount (ytd)' = TOTALYTD([sales amount], 'Calendar'[Date])
+		formatString: #,##0.00
+
+	/// Kombinierter Umsatz Internet + Reseller
+	measure 'total sales amount' = COALESCE([sales amount], 0) + COALESCE('reseller sales'[sales amount], 0)
+		formatString: #,##0.00
+
+	/// Kombinierter Vorjahresumsatz Internet + Reseller
+	measure 'total sales amount (ly)' = COALESCE([sales amount (ly)], 0) + COALESCE('reseller sales'[sales amount (ly)], 0)
+		formatString: #,##0.00
+
+	/// YoY-Wachstum des kombinierten Umsatzes
+	measure 'sales yoy growth %' = VAR Prev = [total sales amount (ly)] RETURN DIVIDE([total sales amount] - Prev, Prev)
+		formatString: 0.00%
+
+	/// MoM-Wachstum des kombinierten Umsatzes
+	measure 'sales mom growth %' = VAR Prev = CALCULATE([total sales amount], PREVIOUSMONTH('Calendar'[Date])) RETURN DIVIDE([total sales amount] - Prev, Prev)
+		formatString: 0.00%
+
+	/// Rang je Kategorie basierend auf kombiniertem Umsatz
+	measure 'product sales rank' = RANKX(ALLEXCEPT('product', 'product'[category]), [total sales amount], , DESC, Dense)
+		formatString: 0
+
+	partition internet_sales-0 = m
+		mode: import
+		source = ```
+let
+    Source = Sql.Database(#"Parameter_Server", #"Parameter_Database"),
+    F = Source{[Schema="dbo",Item="FactInternetSales"]}[Data],
+    S = Table.SelectColumns(F, {"ProductKey", "OrderDateKey", "SalesAmount"}),
+    A = Table.AddColumn(S, "order date", each 
+        let
+            k = Text.PadStart(Text.From([OrderDateKey]), 8, "0"),
+            y = Text.Start(k, 4),
+            m = Text.Middle(k, 4, 2),
+            d = Text.End(k, 2)
+        in Date.FromText(y & "-" & m & "-" & d)
+    , type date),
+    R = Table.RenameColumns(A, {{"ProductKey", "product key"}, {"SalesAmount", "sales amount"}}),
+    T = Table.TransformColumnTypes(R, {{"product key", Int64.Type}, {"order date", type date}, {"sales amount", type number}}),
+    FSel = Table.SelectColumns(T, {"product key", "order date", "sales amount"})
+in
+    FSel
+```
