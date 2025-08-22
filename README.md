@@ -35,11 +35,30 @@ This demonstration uses London Taxi trip data from a Microsoft Fabric Data Wareh
 
 6. Review the generated development spec, then prompt Copilot to proceed with implementing the semantic model and Power BI reports.
 
-▶️End-to-End demo: [LinkedIn post & video](https://www.linkedin.com/feed/update/urn:li:activity:7347917906363518977/?commentUrn=urn%3Ali%3Acomment%3A(ugcPost%3A7347917694953754625%2C7348260275357204482)&dashCommentUrn=urn%3Ali%3Afsd_comment%3A(7348260275357204482%2Curn%3Ali%3AugcPost%3A7347917694953754625))
+## 📊 London Taxi Revenue Analytics Scenario
 
-See the branch [ai-agent](https://github.com/RuiRomano/pbip-demo-agentic/tree/ai-agent) for an example of what was built by Github Copilot.
+This demonstration showcases a comprehensive business intelligence solution using **real-world London Taxi trip data** stored in a **Microsoft Fabric Data Warehouse**. The scenario demonstrates how AI agents can automatically create:
+
+### 🎯 **Business Intelligence Requirements**
+- **Revenue Analysis**: Track total revenue from fares and tips across payment methods and vendors
+- **Growth Analytics**: Year-over-year and month-over-month revenue trend analysis with time intelligence
+- **Location Intelligence**: Identify top-performing pickup locations and boroughs for fleet optimization
+- **Payment Insights**: Analyze revenue distribution across different payment methods
+
+### 📈 **Power BI Visualizations**
+- **Executive Dashboard**: KPI cards with trend indicators and conditional formatting
+- **Time Series Analysis**: Interactive line charts with drill-down capabilities
+- **Location Rankings**: Horizontal bar charts showing top performing areas
+- **Payment Distribution**: Donut charts with percentage breakdowns
+- **Interactive Exploration**: Comprehensive slicers and cross-filtering
+
+### 🏗️ **Technical Implementation**
+- **Microsoft Fabric Data Warehouse** integration with parametrized connections
+- **TMDL semantic modeling** following Power BI best practices
+- **DAX measures** for advanced analytics and time intelligence
+- **PBIP file format** enabling version control and CI/CD workflows
 
 > 📌 **Notes** 
 > - The [kb-pbip.md](.resources/kb-pbip.md) file includes important knowledge base that AI will use to better understand PBIP file structure and TMDL.
-> - I got best results using `Claude Sonnet 4` model which requires [GitHub Copilot Pro subscription](https://github.com/features/copilot/plans?cft=copilot_li.features_copilot)
+> - Best results are achieved using advanced AI models like `Claude Sonnet 4` which requires [GitHub Copilot Pro subscription](https://github.com/features/copilot/plans?cft=copilot_li.features_copilot)
 
