@@ -101,5 +101,47 @@ let
     Table = Source{[Schema="dbo",Item="TableName"]}[Data]
 in
     Table
-
 ```
+
+# Microsoft Fabric Data Warehouse Integration 🏭
+
+## Connection Best Practices
+- Use organizational authentication for Fabric Data Warehouse connections
+- Leverage DirectLake mode when possible for optimal performance with Fabric sources
+- Consider data source settings and privacy levels for proper connectivity
+- Use semantic model parameters for server and database names to enable environment flexibility
+
+## Fabric-Specific Power Query Patterns
+```powerquery
+let
+    Source = Sql.Database(#"Parameter_Server", #"Parameter_Database", [CreateNavigationProperties=false]),
+    Table = Source{[Schema="dbo",Item="TableName"]}[Data]
+in
+    Table
+```
+
+# Power BI Report Development Best Practices 📊
+
+## Visual Design Guidelines
+- **KPI Cards**: Use for single metric displays with trend indicators and conditional formatting
+- **Line Charts**: Ideal for time-series analysis with multiple series comparison capabilities
+- **Bar Charts**: Perfect for ranking and categorical comparisons, use horizontal orientation for long category names
+- **Donut Charts**: Effective for part-to-whole relationships, limit to 5-7 categories maximum
+- **Tables/Matrix**: Use sparingly, focus on detailed drill-through scenarios
+
+## Interactive Features
+- **Cross-filtering**: Ensure all visuals respond appropriately to selections in other visuals
+- **Drill-through**: Implement contextual navigation between summary and detail views
+- **Slicers**: Position strategically and use consistent styling across all pages
+- **Tooltips**: Add custom tooltips with additional context and metrics
+
+## Report Structure
+- **Page Layout**: Follow F-pattern reading flow (top-left to bottom-right)
+- **Color Scheme**: Use consistent corporate colors with accessibility considerations
+- **Typography**: Maintain hierarchy with clear titles, subtitles, and labels
+- **White Space**: Use appropriate spacing to avoid cluttered appearance
+
+## Mobile Optimization
+- Design mobile layouts for key visuals and interactions
+- Test responsive behavior across different screen sizes
+- Prioritize most important metrics for mobile views
